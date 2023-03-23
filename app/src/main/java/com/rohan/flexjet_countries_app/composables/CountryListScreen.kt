@@ -15,19 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rohan.flexjet_countries_app.data.Country
 
-//@Composable
-//fun CountryListScreen(countries: List<Country>, onClick: (Country) -> Unit) {
-//    LazyColumn {
-//        items(countries) { country ->
-//            Text(
-//                text = country.name,
-//                modifier = Modifier
-//                    .clickable { onClick(country) }
-//                    .padding(16.dp)
-//            )
-//        }
-//    }
-//}
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
