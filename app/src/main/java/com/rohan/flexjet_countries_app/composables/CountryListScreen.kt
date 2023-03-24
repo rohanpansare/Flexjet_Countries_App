@@ -11,9 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rohan.flexjet_countries_app.data.Country
+import com.rohan.flexjet_countries_app.data.getCountries
+import com.rohan.flexjet_countries_app.ui.theme.Flexjet_Countries_AppTheme
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -62,5 +65,14 @@ fun CountryListScreen(
                 }
             }
         }
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    Flexjet_Countries_AppTheme {
+        CountryListScreen(countries = getCountries(), onClick = {} )
     }
 }

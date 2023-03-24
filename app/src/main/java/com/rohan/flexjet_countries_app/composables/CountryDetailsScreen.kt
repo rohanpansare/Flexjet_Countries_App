@@ -10,10 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rohan.flexjet_countries_app.data.Country
 import com.rohan.flexjet_countries_app.data.CountryDetails
 import com.rohan.flexjet_countries_app.network.RetrofitInstance
+import com.rohan.flexjet_countries_app.ui.theme.Flexjet_Countries_AppTheme
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -154,6 +156,14 @@ fun CountryDetailsScreen(country: Country) {
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview() {
+    Flexjet_Countries_AppTheme {
+        CountryDetailsScreen(Country("India"))
     }
 }
 
