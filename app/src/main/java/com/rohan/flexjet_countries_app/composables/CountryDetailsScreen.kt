@@ -2,10 +2,12 @@ package com.rohan.flexjet_countries_app.composables
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -13,15 +15,26 @@ import com.rohan.flexjet_countries_app.data.Country
 import com.rohan.flexjet_countries_app.data.CountryDetails
 import com.rohan.flexjet_countries_app.network.RetrofitInstance
 
+
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CountryDetailsScreen(country: Country) {
 
     var countryDetails by remember { mutableStateOf(listOf<CountryDetails>()) }
+    val context = LocalContext.current
     val retrofitInstance = RetrofitInstance()
     LaunchedEffect(country.name) {
-        countryDetails = retrofitInstance.getCountryDetails(country.name)
-        Log.d("Country", countryDetails.toString())
+        try {
+            countryDetails = retrofitInstance.getCountryDetails(country.name)
+            Log.d("Country", countryDetails.toString())
+        } catch (e: Exception) {
+            Toast.makeText(
+                context,
+                "Error retrieving country details for ${country.name}",
+                Toast.LENGTH_SHORT
+            ).show()
+            Log.e("Country", "Error retrieving country details for ${country.name}", e)
+        }
     }
     var capital = ""
     var population = ""
